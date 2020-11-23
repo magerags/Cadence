@@ -1,9 +1,12 @@
 // Specific CSS for your home-page
-.img{
-    display: block;
-    margin-left: auto;
-    margin-right: 70px; }
-.logo {
+body {
   background-color: #46d5b3;
+}
+
+.logo {
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
