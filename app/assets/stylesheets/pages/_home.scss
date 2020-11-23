@@ -4,9 +4,14 @@ body {
 }
 
 .logo {
-  height: auto;
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
+.img {
+  width: 105%;
+  max-width: 1200px;
+}
+
 
