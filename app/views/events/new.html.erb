@@ -1,0 +1,8 @@
+<%= simple_form_for @event do |f| %>
+<%= f.association :category %>
+<%= f.input :name %>
+<%= f.input :description%>
+<%= f.input :starting_time%>
+<%= f.input :ending_time%>
+<%= f.submit %>
+<% end %>

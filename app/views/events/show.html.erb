@@ -1,0 +1,9 @@
+<%= @event.name %>
+<%= @event.description %>
+<%= @event.starting_time.strftime("%m-%e-%y %H:%M") %>
+<%= @event.ending_time.strftime("%m-%e-%y %H:%M") %>
+<%= link_to @event, method: :delete, data: { confirm: 'Are you sure?'} do %>
+<i class="fas fa-minus-circle"></i>
+<% end %>
+
+<p><%= link_to "Back", events_path %></p>

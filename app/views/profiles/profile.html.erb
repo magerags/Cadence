@@ -1,5 +1,8 @@
-<%= current_user.email %>
-
 <%= @user_setting.name %>
-<%= @user_setting.bed_time %>
-<%= @user_setting.wake_time %>
+<%= @user_setting.bed_time.strftime("%H:%M") %>
+<%= @user_setting.wake_time.strftime("%H:%M") %>
+<%= @user_setting.work_start.strftime("%H:%M") %>
+<%= @user_setting.work_end.strftime("%H:%M") %>
+
+<%= current_user.email %>
+<%= link_to "edit", profile_edit_path(@profile) %>
