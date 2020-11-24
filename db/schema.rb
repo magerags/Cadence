@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 2020_11_24_112603) do
     t.bigint "category_id", null: false
     t.string "name"
     t.string "description"
-    t.boolean "repeatable" #extra-feature
+    t.boolean "repeatable"
     t.datetime "starting_time"
     t.datetime "ending_time"
     t.datetime "created_at", precision: 6, null: false

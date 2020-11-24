@@ -9,9 +9,9 @@
 puts "running seeds..."
 
 UserSetting.destroy_all
-User.destroy_all
 Event.destroy_all
 Category.destroy_all
+User.destroy_all
 
 tom = User.create!(email: 'tom@tom.com', password: '123456')
 
@@ -35,7 +35,7 @@ Category.create!(name: 'Running')
 
 Event.create!(
   user: tom,
-  category: Category.find(rand(0..8)),
+  category: Category.all.sample,
   name: 'Test event 1',
   description: 'This is a test of the events model',
   repeatable: false,
@@ -45,7 +45,7 @@ Event.create!(
 
 Event.create!(
   user: tom,
-  category: Category.find(rand(0..8)),
+  category: Category.all.sample,
   name: 'Test event 2',
   description: 'This is the second test of the events model',
   repeatable: false,
