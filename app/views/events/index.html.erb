@@ -1,0 +1,9 @@
+<% current_user.events.each do |event|%>
+<%= link_to event do %>
+<%= event.category.name %> | <%= event.name %>
+<% end %>
+<% end %>
+
+
+
+<p><%= link_to "new event", new_event_path %></p>
