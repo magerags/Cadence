@@ -43,4 +43,14 @@ Event.create!(
   ending_time: DateTime.now + 1.hours,
   )
 
+Event.create!(
+  user: tom,
+  category: Category.find(rand(0..8)),
+  name: 'Test event 2',
+  description: 'This is the second test of the events model',
+  repeatable: false,
+  starting_time: DateTime.now + 2.hours,
+  ending_time: DateTime.now + 4.hours,
+  )
+
 puts "done!"
