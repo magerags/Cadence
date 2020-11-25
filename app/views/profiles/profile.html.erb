@@ -1,8 +1,15 @@
-<%= @user_setting.name %>
-<%= @user_setting.bed_time.strftime("%H:%M") %>
-<%= @user_setting.wake_time.strftime("%H:%M") %>
-<%= @user_setting.work_start.strftime("%H:%M") %>
-<%= @user_setting.work_end.strftime("%H:%M") %>
 
-<%= current_user.email %>
-<%= link_to "edit", profile_edit_path(@profile) %>
+<h1> Your Profile </h1>
+
+<p><%= @user_setting.name %>
+  <%= link_to "edit", profile_edit_path(@profile) %></p>
+<p> From <%= @user_setting.bed_time.strftime("%H:%M") %> to
+<%= @user_setting.wake_time.strftime("%H:%M") %>
+  <%= link_to "edit", profile_edit_path(@profile) %></p>
+<p> From <%= @user_setting.work_start.strftime("%H:%M") %> to
+<%= @user_setting.work_end.strftime("%H:%M") %>
+<%= link_to "edit", profile_edit_path(@profile) %></p>
+<p><%= current_user.email %></p>
+
+ <p> <%= link_to "My events", events_path(@events) %> </p>
+ <p> <%= link_to "Dashboard", dashboard_path %> </p>
