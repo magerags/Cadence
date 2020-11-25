@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get "/profile", to: "profiles#profile"
   patch "/profile", to: "profiles#update"
   get "/profile/edit", to: "profiles#edit"
+  get "/dashboard" , to: "dashboard#show"
 
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
