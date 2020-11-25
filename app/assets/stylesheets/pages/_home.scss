@@ -1,6 +1,6 @@
 // Specific CSS for your home-page
 body {
-  background-color: #46d5b3;
+  background-image: linear-gradient(45deg, #0D4262 0%, #4CE3BF 100%);
 }
 
 .logo {
@@ -11,12 +11,13 @@ body {
 
 .home_img {
   width: 50%;
-  min-width: 500px;
+  min-width: 400px;
   margin-bottom: 5px;
 }
 
 .home_wrapper {
-  width: 100%
+  width: 100%;
+  padding: 10px;
 }
 
 .home_header {
@@ -47,6 +48,7 @@ body {
     color: rgba(255,255,255,0.7);
     position: absolute;
     bottom: 40px;
+    text-align: center;
   }
 
 }
