@@ -1,12 +1,55 @@
-.navbar-lewagon {
-  justify-content: space-between;
-  background: white;
+.vertical-nav {
+  min-width: 16rem;
+  width: 16rem;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
+  background-color: $blue;
 }
 
-.navbar-lewagon .navbar-collapse {
-  flex-grow: 0;
+.page-content {
+  width: calc(100% - 16rem);
+  margin-left: 16rem;
 }
 
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
+/* for toggle behavior */
+
+#sidebar.active {
+  margin-left: -16rem;
+}
+
+#content.active {
+  width: 100%;
+  margin: 0;
+}
+
+#sidebar {
+  li {
+    font-size: 1.3rem;
+  }
+  i {
+    font-size: 1.4rem;
+  }
+  .active {
+    background-color: #0B3954;
+  }
+}
+
+@media (max-width: 768px) {
+  #sidebar {
+    margin-left: -16rem;
+  }
+  #sidebar.active {
+    margin-left: 0;
+  }
+  #content {
+    width: 100%;
+    margin: 0;
+  }
+  #content.active {
+    margin-left: 16rem;
+    width: calc(100% - 16rem);
+  }
 }
