@@ -1,9 +1,16 @@
-<% current_user.events.each do |event|%>
+<%= week_calendar(attribute: :starting_time, end_attribute: :ending_time) do |date| %>
+  <%= date %>
+  <% today_events = current_user.events.where("date(starting_time) >= ? and date(ending_time) <= ?", date, date) %>
+
+<% today_events.each do |event|%>
 <%= link_to event do %>
-<%= event.category.name %> | <%= event.name %>
+<%= event.category.name %> | <%= event.name %> | <%= event.starting_time.strftime("%H:%M") %> | <%= event.ending_time.strftime("%H:%M") %>
 <% end %>
 <% end %>
+ <% end %>
+
 
 
 
 <p><%= link_to "new event", new_event_path %></p>
+<p><%= link_to "Back", profile_path(@profile) %></p>
