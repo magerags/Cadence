@@ -1,7 +1,6 @@
 .card1 {
   margin: 10px;
   background-color: rgb(242,242,242);
-  height: 250px;
   border-radius: 20px;
   width: 100%;
   min-width: 300px;
@@ -16,9 +15,6 @@
   width: 32%;
   min-width: 300px;
   padding: 20px 30px;
-  display: flex;
-  justify-content: space-between;
-  flex-direction: column;
 
   h4, h5 {
     font-family: roboto;
@@ -27,6 +23,7 @@
 
   h4 {
     color: rgba(30,30,30, 0.8);
+    height: 50px;
   }
 
   h5 {
@@ -37,7 +34,15 @@
     text-align: center;
     font-size: 6rem;
     color: rgb(50,50,50);
+    margin-bottom: 30px;
   }
+}
+
+.card2_flex {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  height: 100%
 }
 
 #g1 {
