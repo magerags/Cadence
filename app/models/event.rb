@@ -3,12 +3,23 @@ class Event < ApplicationRecord
   belongs_to :category
 
   def self.amount_of_hours(current_user)
-    hours = current_user.events.where("date(starting_time) >= date(?)", Date.today).pluck(:starting_time, :ending_time)
-    hours.reduce(0.0) do |acc, hour|
-     time = (hour[1] - hour[0]) / 3600
-     acc += time
-     acc
-
+    events = current_user.events.where("date(starting_time) >= date(?)", Date.today)
+    events.reduce({}) do |acc, event|
+      time = (event.ending_time - event.starting_time) / 3600
+      if acc[event.category.name].nil?
+         acc[event.category.name] = time
+      else
+        acc[event.category.name] += time
+      end
+      acc
     end
+  end
+
+  def self.events_today(user, date)
+    user.events.where("date(starting_time) >= ? and date(ending_time) <= ?", date, date)
+
+  end
 end
-end
+
+
+#.pluck(:starting_time, :ending_time)
