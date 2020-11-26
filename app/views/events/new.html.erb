@@ -1,3 +1,5 @@
+<%= render 'shared/navbar' %>
+<div class="page-content p-5" id="content">
 <%= simple_form_for @event do |f| %>
 <%= f.association :category %>
 <%= f.input :name %>
@@ -6,3 +8,4 @@
 <%= f.input :ending_time%>
 <%= f.submit %>
 <% end %>
+</div>

@@ -1,3 +1,6 @@
+<%= render 'shared/navbar' %>
+<div class="page-content p-5" id="content">
+<%= week_calendar(attribute: :starting_time, end_attribute: :ending_time) do |date| %>
 <div id = "leftbox">
 <%= month_calendar(attribute: :starting_time, end_attribute: :ending_time) do |date| %>
   <%= date %>
@@ -35,7 +38,7 @@
 <% end %>
 <% end %>
 <% end %>
+
+<p><%= link_to "new event", new_event_path %></p>
+<p><%= link_to "Back", profile_path(@profile) %></p>
 </div>
-
-
-

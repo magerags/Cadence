@@ -1,3 +1,5 @@
+<%= render 'shared/navbar' %>
+<div class="page-content p-5" id="content">
 <%= simple_form_for current_user.user_setting, url: profile_path, method: :patch do |f| %>
 <%= f.input :bed_time %>
 <%= f.input :wake_time %>
@@ -8,3 +10,4 @@
 <% end %>
 
 <%= link_to "Back", profile_path(@profile) %>
+</div>
