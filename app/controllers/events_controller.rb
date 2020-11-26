@@ -6,6 +6,10 @@ class EventsController < ApplicationController
 
   def index
     @events = Event.all
+    if params[:date]
+      @dates = Event.events_today(current_user, params[:date])
+
+    end
   end
 
   def create
@@ -27,12 +31,16 @@ class EventsController < ApplicationController
 
   def update
     @event.update(event_params)
+    if params[:date]
+    redirect_to events_path(date: params[:date])
+  else
     redirect_to events_path
+    end
   end
 
   def destroy
     @event.destroy
-    redirect_to events_path
+    redirect_to events_path(date: params[:date])
   end
 
   private

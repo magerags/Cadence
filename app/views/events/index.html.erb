@@ -1,16 +1,41 @@
-<%= week_calendar(attribute: :starting_time, end_attribute: :ending_time) do |date| %>
+<div id = "leftbox">
+<%= month_calendar(attribute: :starting_time, end_attribute: :ending_time) do |date| %>
   <%= date %>
   <% today_events = current_user.events.where("date(starting_time) >= ? and date(ending_time) <= ?", date, date) %>
 
+<% if !today_events.size.zero? %>
+<%= link_to "Show events", events_path(date: date) %>
+<% end %>
 <% today_events.each do |event|%>
-<%= link_to event do %>
-<%= event.category.name %> | <%= event.name %> | <%= event.starting_time.strftime("%H:%M") %> | <%= event.ending_time.strftime("%H:%M") %>
+
 <% end %>
 <% end %>
+
+<h2> New event: <%= link_to new_event_path do  %>
+  <i class="far fa-calendar-plus"></i>
+  <% end %>
+</h2>
+<h2> Profile: <%= link_to profile_path(@profile) do %>
+  <i class="fas fa-users"></i>
+</h2>
+<% end %>
+ <h2> Dashboard: <%= link_to dashboard_path do %>
+ <i class="fas fa-columns"></i>
  <% end %>
+</h2>
+</div>
+<div id = "rightbox">
+ <% if @dates %>
+<% @dates.each do |date| %>
+<h1><%= date.starting_time.strftime("%D") %> </h1>
+<%= date.starting_time.strftime("%H:%M") %> | <%= date.ending_time.strftime("%H:%M") %> | <%= date.name %> | <%= date.description %>
+<p><%= link_to "Edit", edit_event_path(id: date.id, date: params[:date]) %></p>
+<%= link_to event_path(id: date.id, date: params[:date]), method: :delete, data: { confirm: 'Are you sure?'} do %>
+<i class="fas fa-minus-circle"></i>
+<% end %>
+<% end %>
+<% end %>
+</div>
 
 
 
-
-<p><%= link_to "new event", new_event_path %></p>
-<p><%= link_to "Back", profile_path(@profile) %></p>
