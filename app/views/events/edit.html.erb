@@ -6,6 +6,7 @@
 <%= f.input :description%>
 <%= f.input :starting_time%>
 <%= f.input :ending_time%>
+<%= hidden_field_tag :date, params[:date] if params[:date] %>
 <%= f.submit %>
 <% end %>
 </div>
