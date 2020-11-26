@@ -1,3 +1,5 @@
+<%= render 'shared/navbar' %>
+<div class="page-content p-5" id="content">
 <%= week_calendar(attribute: :starting_time, end_attribute: :ending_time) do |date| %>
   <%= date %>
   <% today_events = current_user.events.where("date(starting_time) >= ? and date(ending_time) <= ?", date, date) %>
@@ -14,3 +16,4 @@
 
 <p><%= link_to "new event", new_event_path %></p>
 <p><%= link_to "Back", profile_path(@profile) %></p>
+</div>
