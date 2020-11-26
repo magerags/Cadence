@@ -1,0 +1,18 @@
+.btn-primary {
+  color: white;
+  border-radius: 12px;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.btn-alternate {
+  background-color: white;
+  border-color: white;
+  color: $blue;
+}
+
+.btn-alternate:hover {
+  background-color: rgb(238,238,238);
+  border-color: rgb(238,238,238);
+  color: $blue;
+}

@@ -1,0 +1,60 @@
+.card1 {
+  margin: 10px;
+  background-color: rgb(242,242,242);
+  height: 250px;
+  border-radius: 20px;
+  width: 100%;
+  min-width: 300px;
+  padding: 25px 35px;
+}
+
+.card2 {
+  margin-top: 10px;
+  margin-bottom: 5px;
+  height: 300px;
+  border-radius: 20px;
+  width: 32%;
+  min-width: 300px;
+  padding: 20px 30px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+
+  h4, h5 {
+    font-family: roboto;
+    font-weight: 300;
+  }
+
+  h4 {
+    color: rgba(30,30,30, 0.8);
+  }
+
+  h5 {
+    color: rgba(30,30,30, 0.6);
+  }
+
+  i {
+    text-align: center;
+    font-size: 6rem;
+    color: rgb(50,50,50);
+  }
+}
+
+#g1 {
+  background-image: linear-gradient(135deg, rgba(13,66,98,0.2) 0%, rgba(76,227,191,0.2) 100%);
+}
+#g2{
+  background-image: linear-gradient(180deg, rgba(13,66,98,0.15) 0%, rgba(76,227,191,0.2) 100%);
+}
+#g3{
+  background-image: linear-gradient(-135deg, rgba(13,66,98,0.2) 0%, rgba(76,227,191,0.2) 100%);
+}
+#g4{
+  background-image: linear-gradient(45deg, rgba(13,66,98,0.2) 0%, rgba(76,227,191,0.2) 100%);
+}
+#g5{
+  background-image: linear-gradient(0deg, rgba(13,66,98,0.15) 0%, rgba(76,227,191,0.2) 100%);
+}
+#g6{
+  background-image: linear-gradient(-45deg, rgba(13,66,98,0.2) 0%, rgba(76,227,191,0.2) 100%);
+}

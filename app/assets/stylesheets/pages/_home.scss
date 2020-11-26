@@ -1,8 +1,4 @@
 // Specific CSS for your home-page
-body {
-  background-image: linear-gradient(45deg, #0D4262 0%, #4CE3BF 100%);
-}
-
 .logo {
   display: flex;
   justify-content: space-around;
@@ -17,10 +13,10 @@ body {
 
 .home_wrapper {
   width: 100%;
-  padding: 10px;
 }
 
 .home_header {
+  padding: 0px!important;
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -62,21 +58,24 @@ body {
   width: 280px;
 }
 
-.btn-primary {
-  color: white;
-  border-radius: 12px;
-  padding-left: 30px;
-  padding-right: 30px;
-}
-
-.btn-alternate {
+.home_content {
   background-color: white;
-  border-color: white;
-  color: $blue;
-}
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 10px;
 
-.btn-alternate:hover {
-  background-color: rgb(238,238,238);
-  border-color: rgb(238,238,238);
-  color: $blue;
+  h1 {
+    color: #0D4262;
+    margin-bottom: -2px;
+    font-weight: 600;
+  }
+
+  p {
+    margin-top: 30px;
+    font-size: 1.5rem;
+    text-align: justify;
+    color: rgb(40,40,40);
+    font-weight: 300
+  }
 }
