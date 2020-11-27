@@ -1,0 +1,31 @@
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0px;
+  margin-top: 7px;
+  margin-bottom: 3px;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  background-color: rgba(255,255,255,0.7);
+  padding: 6px;
+  border-radius: 200px;
+  padding-right: 170px;
+  color: rgb(100,100,100);
+
+  i {
+    margin-left: 10px;
+  }
+
+  p {
+    margin-left: 12px;
+  }
+}
+
+.flex-end p {
+  margin-right: 18px;
+  font-weight: 500;
+  font-size: 1.1rem;
+}

@@ -1,5 +1,7 @@
 <%= render 'shared/navbar' %>
-<div class="page-content p-5" id="content">
+<div class="page-content" id="content">
+<%= render 'shared/topbar' %>
+<div class="wrapper">
 <h1> Your Profile </h1>
 
 <h2><%= @user_setting.name %>
@@ -12,4 +14,5 @@
 <%= link_to "edit", profile_edit_path(@profile) %></h2>
 <h2><%= current_user.email %></h2>
 
+</div>
 </div>

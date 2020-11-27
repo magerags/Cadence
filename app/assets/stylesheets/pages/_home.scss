@@ -100,8 +100,9 @@
   i {
     color: $blue;
   }
+}
 
-  .flex-end {
-    display: flex;
-  }
+.flex-end {
+  display: flex;
+  align-items: center;
 }
