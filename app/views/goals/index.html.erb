@@ -1,1 +1,10 @@
+<%= render 'shared/navbar' %>
+<div class="page-content p-5" id="content">
 
+<%@goals.each do |goal| %>
+<%= goal.category.name %>
+<p>Your goal this week is <%= goal.goaltime.strftime("%H:%M") %> hours. Make the best of it!!!</p>
+<% end %>
+
+<%= link_to "New Goal", new_goal_path %>
+</div>
