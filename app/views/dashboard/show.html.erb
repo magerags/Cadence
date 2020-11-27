@@ -1,10 +1,12 @@
 <%= render 'shared/navbar' %>
-<div class="page-content p-5" id="content">
+<div class="page-content" id="content">
+<%= render 'shared/topbar' %>
+<div class="wrapper">
 <h1> Remaining free time <%= @hours_left %> </h1>
 <p><%= link_to "Back to my profile", profile_path(@profile) %></p>
 <h1>Category </h1> <%@hours_by_category.keys.each do |key| %>
  <h2> <%= key %> </h2>
 <h2> You passed <%= @hours_by_category[key] %> hours on your goal of 5.O </h2>
   <% end %>
-
+</div>
 </div>
