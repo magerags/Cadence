@@ -5,18 +5,29 @@
   position: fixed;
   top: 0;
   left: 0;
-  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
   background-color: $blue;
+
+  .img {
+    width: 123%;
+    margin-top: 50px;
+    padding: 20px;
+    margin-left: -30px;
+  }
+}
+
+.wrapper {
+  border-radius: 30px;
+  background-color: white;
+  min-height: 90vh;
+  padding: 30px;
+  width: 100%;
 }
 
 .page-content {
-  width: calc(100% - 16rem);
+  width: calc(100% - 18.5rem);
   margin-left: 16rem;
 }
 
-.img {
-  width: 100%;
-}
 
 /* for toggle behavior */
 
