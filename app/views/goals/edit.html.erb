@@ -1,0 +1,7 @@
+<div class="page-content p-5" id="content">
+<%= simple_form_for @goal do |f| %>
+<%= f.association :category %>
+<%= f.input :goal %>
+<%= f.submit %>
+<% end %>
+</div>
