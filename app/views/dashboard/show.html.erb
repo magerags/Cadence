@@ -4,7 +4,12 @@
 <p><%= link_to "Back to my profile", profile_path(@profile) %></p>
 <h1>Category </h1> <%@hours_by_category.keys.each do |key| %>
  <h2> <%= key %> </h2>
-<h2> You passed <%= @hours_by_category[key] %> hours on your goal of 5.O </h2>
+ <h2> You scheduled <%= @hours_by_category[key] %> hours
+<%  gc = Category.find_by(name: key) %>
+<% user_goals = Goal.where(user: current_user, category: gc) %>
+<% user_goals.each do |goal| %>
+<% goal.goaltime.strftime("%H") %>
+ on your goal of <%= goal.goaltime.strftime("%H")  %> hours </h2>
   <% end %>
-
+<% end %>
 </div>

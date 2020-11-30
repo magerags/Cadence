@@ -3,7 +3,8 @@ class GoalsController < ApplicationController
 
 
   def index
-    @goals = Goal.all
+    @goals = Goal.order('id ASC')
+
   end
 
   def new
@@ -30,7 +31,7 @@ class GoalsController < ApplicationController
   end
 
   def destroy
-    @event.destroy
+    @goal.destroy
     redirect_to goals_path
   end
 
