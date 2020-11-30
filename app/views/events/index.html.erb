@@ -24,7 +24,7 @@
  <% if @dates %>
 <% @dates.each do |date| %>
 <h1><%= date.starting_time.strftime("%D") %> </h1>
-<%= date.starting_time.strftime("%H:%M") %> | <%= date.ending_time.strftime("%H:%M") %> | <%= date.name %> | <%= date.description %>
+<%= date.starting_time.strftime("%H:%M") %> | <%= date.ending_time.strftime("%H:%M") %> | <%= date.category.name %> | <%= date.name %> | <%= date.description %>
 <p><%= link_to "Edit", edit_event_path(id: date.id, date: params[:date]) %></p>
 <%= link_to event_path(id: date.id, date: params[:date]), method: :delete, data: { confirm: 'Are you sure?'} do %>
 <i class="fas fa-minus-circle"></i>
