@@ -1,8 +1,16 @@
 <%= render 'shared/navbar' %>
-<div class="page-content p-5" id="content">
-<h1> Remaining free time <%= @hours_left %> </h1>
-<p><%= link_to "Back to my profile", profile_path(@profile) %></p>
-<h1>Category </h1> <%@hours_by_category.keys.each do |key| %>
+<div class="page-content" id="content">
+<%= render 'shared/topbar' %>
+<div class="wrapper" id="dashboard_wrapper">
+<h1> <%= Time.now.strftime("%A, %B %d")%>
+<br>
+<br>
+<div>
+<h2> Remaining free time this week: <%= @hours_left.round %> hours </h2>
+</div>
+<br>
+<br>
+<h1>Categories </h1> <%@hours_by_category.keys.each do |key| %>
  <h2> <%= key %> </h2>
  <h2> You scheduled <%= @hours_by_category[key] %> hours
 <%  gc = Category.find_by(name: key) %>
@@ -12,4 +20,5 @@
  on your goal of <%= goal.goaltime.strftime("%H")  %> hours </h2>
   <% end %>
 <% end %>
+</div>
 </div>

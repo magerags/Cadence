@@ -1,5 +1,7 @@
 <%= render 'shared/navbar' %>
-<div class="page-content p-5" id="content">
+<div class="page-content" id="content">
+<%= render 'shared/topbar' %>
+<div class="wrapper">
 <div id = "leftbox">
 <%= month_calendar(attribute: :starting_time, end_attribute: :ending_time) do |date| %>
   <%= date %>
@@ -30,5 +32,6 @@
 <% end %>
 <% end %>
 
+</div>
 </div>
 </div>
