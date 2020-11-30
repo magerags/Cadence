@@ -1,27 +1,24 @@
 <%= render 'shared/navbar' %>
 <div class="page-content" id="content">
-  <%= render 'shared/topbar' %>
-  <div class="wrapper" id="dashboard_wrapper">
 
-  <h1 id="date"> <%= Time.now.strftime("%A, %B %d")%> </h1>
+<%= render 'shared/topbar' %>
+<div class="wrapper" id="dashboard_wrapper">
+<h1> <%= Time.now.strftime("%A, %B %d")%> </h1>
+<br>
+<br>
+<div>
+<h2> Remaining free time this week: <%= @hours_left.round %> hours </h2>
+</div>
+<br>
+<br>
+<h1>Categories </h1> <%@hours_by_category.keys.each do |key| %>
+ <h2> <%= key %> </h2>
 
-    <div class="card_container">
-      <div class=card_rtime>
-      <h4>Remaining Time</h4>
-      <p>This week</p>
-      <h1><%= @hours_left.round %> Hours</h1>
-      </div>
-
-      <h1>Categories </h1> <%@hours_by_category.keys.each do |key| %>
-       <h2> <%= key %> </h2>
-       <h2> You scheduled <%= @hours_by_category[key] %> hours
-      <%  gc = Category.find_by(name: key) %>
-      <% user_goals = Goal.where(user: current_user, category: gc) %>
-      <% user_goals.each do |goal| %>
-      <% goal.goaltime.strftime("%H") %>
-       on your goal of <%= goal.goaltime.strftime("%H")  %> hours </h2>
-        <% end %>
-      <% end %>
-    </div>
-  </div>
+<%  gc = Category.find_by(name: key) %>
+<% user_goals = Goal.where(user: current_user, category: gc) %>
+<% user_goals.first(5).each do |goal| %>
+<% time = (goal.goaltime.hour) -  @hours_by_category[key] %>
+<h2>You have  <%= time  %> hour(s) left on your goal for the week </h2>
+  <% end %>
+<% end %>
 </div>
