@@ -1,11 +1,13 @@
 <%= render 'shared/navbar' %>
 <div class="page-content" id="content">
 <%= render 'shared/topbar' %>
-<div class="wrapper">
+<div class="wrapper" id="dashboard_wrapper">
 <h1> <%= Time.now.strftime("%A, %B %d")%>
 <br>
 <br>
+<div>
 <h2> Remaining free time this week: <%= @hours_left.round %> hours </h2>
+</div>
 <br>
 <br>
 <h1>Categories </h1> <%@hours_by_category.keys.each do |key| %>
