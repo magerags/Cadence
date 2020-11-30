@@ -22,6 +22,6 @@ class RemainingHoursService
   end
 
   def total_hours
-    24 * 7
+    24 * (7 - Date.today.wday)
   end
 end
