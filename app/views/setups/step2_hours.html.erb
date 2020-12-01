@@ -1,0 +1,23 @@
+<div class="form_wrapper">
+  <div class="form">
+    <h2>Hours</h2>
+    <p id="info-text">Now to calculate your free hours! When do you usually sleep or switch off for the day?
+    <div class="form-inputs">
+      <%= simple_form_for @user_setting, url: setup_hours_path do |f| %>
+      <%= f.hidden_field :name, value: params[:user_setting][:name] %>
+      <%= f.input :wake_time, label: "Start of the day", default: Time.parse('8:00'), :as => :time, :minute_step => 15 %>
+      <%= f.input :bed_time, label: "End of the day", default: Time.parse('22:00'), :as => :time, :minute_step => 15 %>
+      <br>
+      <br>
+      <p id="info-text">When do you start and finish work?</p>
+      <%= f.input :work_start, label: "Start Working", default: Time.parse('9:00'), :as => :time, :minute_step => 15 %>
+      <%= f.input :work_end, label: "Finish Working", default: Time.parse('17:00'), :as => :time, :minute_step => 15 %>
+    </div>
+    <div class="form_center_actions">
+      <div class="form-actions">
+        <%= f.button :submit, "Next", class: "btn btn-primary" %>
+     </div>
+    </div>
+    <% end %>
+  </div>
+</div>
