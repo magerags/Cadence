@@ -1,37 +1,41 @@
 <%= render 'shared/navbar' %>
 <div class="page-content" id="content">
-<%= render 'shared/topbar' %>
-<div class="wrapper">
-<div id = "leftbox">
-<%= month_calendar(attribute: :starting_time, end_attribute: :ending_time) do |date| %>
-  <%= date %>
-  <% today_events = current_user.events.where("date(starting_time) >= ? and date(ending_time) <= ?", date, date) %>
+  <%= render 'shared/topbar' %>
+  <div class="wrapper">
+    <div id = "leftbox">
+      <%= month_calendar(attribute: :starting_time, end_attribute: :ending_time) do |date| %>
+        <%= date.day %>
+        <% today_events = current_user.events.where("date(starting_time) >= ? and date(ending_time) <= ?", date, date) %>
 
-<% if !today_events.size.zero? %>
-<%= link_to "Show events", events_path(date: date) %>
-<% end %>
-<% today_events.each do |event|%>
+        <% if !today_events.size.zero? %>
+          <%= link_to "Show events", events_path(date: date) %>
+        <% end %>
+      <% end %>
 
-<% end %>
-<% end %>
+      <h2> New event: <%= link_to new_event_path do  %>
+          <i class="far fa-calendar-plus"></i>
+        <% end %>
+      </h2>
+    </div>
 
-<h2> New event: <%= link_to new_event_path do  %>
-  <i class="far fa-calendar-plus"></i>
-  <% end %>
-</h2>
-</div>
-<div id = "rightbox">
- <% if @dates %>
-<% @dates.each do |date| %>
-<h1><%= date.starting_time.strftime("%D") %> </h1>
-<%= date.starting_time.strftime("%H:%M") %> | <%= date.ending_time.strftime("%H:%M") %> | <%= date.get_category.name %> | <%= date.name %> | <%= date.description %>
-<p><%= link_to "Edit", edit_event_path(id: date.id, date: params[:date]) %></p>
-<%= link_to event_path(id: date.id, date: params[:date]), method: :delete, data: { confirm: 'Are you sure?'} do %>
-<i class="fas fa-minus-circle"></i>
-<% end %>
-<% end %>
-<% end %>
 
-</div>
-</div>
+      <% if @dates %>
+     <div id = "rightbox">
+      <h1><%= @dates.first.starting_time.strftime("%D") %> </h1>
+      <%sorted_dates = @dates.sort_by{|event| event.starting_time}%>
+        <% sorted_dates.each do |date| %>
+        <div class ="date">
+          <%= date.starting_time.strftime("%H:%M") %> | <%= date.ending_time.strftime("%H:%M") %> | <%= date.get_category.name %> | <%= date.name %> | <%= date.description %>
+          <%= link_to "Edit", edit_event_path(id: date.id, date: params[:date]) %>
+          | <%= link_to event_path(id: date.id, date: params[:date]), method: :delete, data: { confirm: 'Are you sure?'} do %>
+            <i class="fas fa-minus-circle"></i>
+          <% end %>
+        </div>
+        <% end %>
+      </div>
+      <% end %>
+
+
+
+  </div>
 </div>
