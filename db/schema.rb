@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_30_155659) do
+ActiveRecord::Schema.define(version: 2020_12_01_112838) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,7 +23,6 @@ ActiveRecord::Schema.define(version: 2020_11_30_155659) do
 
   create_table "events", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.bigint "category_id", null: false
     t.string "name"
     t.string "description"
     t.boolean "repeatable"
@@ -31,18 +30,23 @@ ActiveRecord::Schema.define(version: 2020_11_30_155659) do
     t.datetime "ending_time"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "category_id"
+    t.bigint "user_categories_id"
     t.index ["category_id"], name: "index_events_on_category_id"
+    t.index ["user_categories_id"], name: "index_events_on_user_categories_id"
     t.index ["user_id"], name: "index_events_on_user_id"
   end
 
   create_table "goals", force: :cascade do |t|
-    t.bigint "category_id", null: false
     t.time "goal"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.time "goaltime"
     t.bigint "user_id", null: false
+    t.bigint "user_categories_id"
+    t.bigint "category_id"
     t.index ["category_id"], name: "index_goals_on_category_id"
+    t.index ["user_categories_id"], name: "index_goals_on_user_categories_id"
     t.index ["user_id"], name: "index_goals_on_user_id"
   end
 
@@ -80,8 +84,10 @@ ActiveRecord::Schema.define(version: 2020_11_30_155659) do
   end
 
   add_foreign_key "events", "categories"
+  add_foreign_key "events", "user_categories", column: "user_categories_id"
   add_foreign_key "events", "users"
   add_foreign_key "goals", "categories"
+  add_foreign_key "goals", "user_categories", column: "user_categories_id"
   add_foreign_key "goals", "users"
   add_foreign_key "user_categories", "users"
   add_foreign_key "user_settings", "users"

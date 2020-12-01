@@ -13,9 +13,13 @@ class EventsController < ApplicationController
   end
 
   def create
+    id, class_name = JSON.parse(params[:event][:category])
+    category = class_name.constantize.find(id)
     @event = Event.new(event_params)
     @event.user = current_user
-    if @event.save
+    category_class = class_name.downcase == ("category") ? ("category_id") : ("user_categories_id")
+    @event.send("#{category_class}=", category.id)
+    if @event.save!
       redirect_to events_path
     else
 
@@ -30,11 +34,15 @@ class EventsController < ApplicationController
   end
 
   def update
+    id, class_name = JSON.parse(params[:event][:category])
+    category = class_name.constantize.find(id)
+    category_class = class_name.downcase == ("category") ? ("category_id") : ("user_categories_id")
+    @event.send("#{category_class}=", category.id)
     @event.update(event_params)
     if params[:date]
-    redirect_to events_path(date: params[:date])
-  else
-    redirect_to events_path
+      redirect_to events_path(date: params[:date])
+    else
+      redirect_to events_path
     end
   end
 
@@ -46,7 +54,7 @@ class EventsController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(:name, :description, :starting_time, :ending_time, :category_id)
+    params.require(:event).permit(:name, :description, :starting_time, :ending_time)
   end
 
   def set_event
