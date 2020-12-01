@@ -6,4 +6,5 @@ class User < ApplicationRecord
   has_one :user_setting, dependent: :destroy
   has_many :events, dependent: :destroy
   has_many :goals
+  has_many :user_categories
 end
