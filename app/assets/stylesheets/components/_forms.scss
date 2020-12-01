@@ -65,7 +65,7 @@
 
   p {
     text-align: center;
-    color: rgb(50,50,50);
+    color: rgb(70,70,70);
   }
 
   .btn-primary {
@@ -74,4 +74,10 @@
     font-size: 1.3rem;
     margin-bottom: 25px;
   }
+}
+
+#info-text {
+  font-size: 1rem;
+  margin-bottom: 40px;
+  text-align: justify;
 }
