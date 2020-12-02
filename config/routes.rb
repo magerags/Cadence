@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   post 'setup/hours', to: 'setups#create_step2'
   get 'setup/goals', to: 'setups#step3_goals'
   post 'setup/goals', to: 'setups#create_step3'
+  patch 'setup/goals', to: 'setups#update_step3'
 
   get "/profile", to: "profiles#profile"
   patch "/profile", to: "profiles#update"

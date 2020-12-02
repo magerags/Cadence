@@ -13,12 +13,8 @@ class EventsController < ApplicationController
   end
 
   def create
-    # id, class_name = JSON.parse(params[:event][:category])
-    # category = class_name.constantize.find(id)
     @event = Event.new(event_params)
     @event.user = current_user
-    # category_class = class_name.downcase == ("category") ? ("category_id") : ("user_categories_id")
-    # @event.send("#{category_class}=", category.id)
     if @event.save!
       redirect_to events_path
     else

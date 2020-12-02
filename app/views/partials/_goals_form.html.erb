@@ -1,0 +1,27 @@
+<%= simple_form_for goal, url: setup_goals_path, remote: true, html: {id:"category_form_#{cat.id}"} do |f| %>
+  <div class="each_form">
+    <p><%= cat.name %>
+    <%= f.hidden_field :category, value: cat.id %>
+    <% if cat.goal.nil? %>
+      <div class="addgoal" onclick="toggleSubmitGoal('category_<%= cat.id %>', this)">
+        <p class="lighter">Add goal</p>
+      </div>
+    <% else %>
+      <div>
+        <% if cat.goal.goaltime.strftime('%M') == "00" %>
+        <p class="blue"><%= cat.goal.goaltime.strftime('%k')%> Hours</p>
+        <% else %>
+        <p class="blue"><%= cat.goal.goaltime.strftime('%k') + "h" + " " + cat.goal.goaltime.strftime('%M') + "m" %> </p>
+        <% end %>
+      </div>
+    <% end %>
+    <div class="submit_goal" id="category_<%= cat.id %>">
+      <p>Set your weekly goal</p>
+      <div class="d-flex">
+      <%= f.input :goaltime, label: false, as: :time, default: Time.parse('0:00'), :minute_step => 15 %>
+      <%= f.button :button do %><i class="far fa-check fa-2x"></i><% end %>
+      </div>
+    </div>
+    <div class="show_goal"></div>
+  </div>
+<% end %>
