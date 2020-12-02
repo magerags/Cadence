@@ -3,12 +3,17 @@
 
   <%= render 'shared/topbar' %>
     <div class="wrapper" id="dashboard_wrapper">
+
       <h1> <%= Time.now.strftime("%A, %B %d")%> </h1>
       <br>
       <br>
+      <div class = "card3">
       <div>
-        <h2> Remaining free time this week: <%= @hours_left.round %> hours </h2>
+        <h3> Remaining Hours </h3>
+        <p> this week </p>
+        <h2> <%= @hours_left.round %> hours </h2>
       </div>
+    </div>
       <br>
       <br>
       <h1>Categories </h1>
@@ -20,11 +25,12 @@
         <% user_goals.each do |goal| %>
           <% time = (goal.goaltime.hour) -  @hours_by_category[key] %>
           <% percentage =  (@hours_by_category[key] / (goal.goaltime.hour)) * 100  %>
-          <h2>You have  <%= time  %> hour(s) left on your goal for the week </h2>
+
+          <h2>You have <%= time  %> hour(s) left on your goal for the week </h2>
           <div class="progress w3-progress-container w3-round-xlarge">
             <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: <%= percentage %>%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
           </div>
         <% end %>
       <% end %>
     </div>
-</div>
+    </div>
