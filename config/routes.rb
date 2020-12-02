@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   resources :events, only: [:index, :show, :new, :create, :edit, :update, :destroy]
   resources :goals, only: [:index, :create, :new, :edit, :update, :destroy]
-  resources :user_categories, only: [:index, :create, :new, :edit, :update, :destroy]
+  resources :categories, only: [:index, :create, :new, :edit, :update, :destroy]
 
   get 'setup/name', to: 'setups#step1_name'
   get 'setup/hours', to: 'setups#step2_hours'

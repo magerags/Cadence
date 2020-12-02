@@ -2,8 +2,8 @@
 <div class="page-content" id="content">
 <%= render 'shared/topbar' %>
 <div class="wrapper" id="dashboard_wrapper">
-<%@goals.each do |goal| %>
-<%= goal.get_category.name %>
+<% @goals.each do |goal| %>
+<%= goal.category.name %>
 <p>Your goal this week is <%= goal.goaltime.strftime("%H:%M") %> hours. Make the best of it!!!</p>
 <%= link_to "edit", edit_goal_path(goal) %>
 <%= link_to goal_path(goal), method: :delete, data: { confirm: 'Are you sure?'} do %>
@@ -12,6 +12,6 @@
 <% end %>
 
 <p><%= link_to "New Goal", new_goal_path %></p>
-<p> <%= link_to "Your categories", user_categories_path %> </p>
+<p> <%= link_to "Your categories", categories_path %> </p>
 </div>
 </div>

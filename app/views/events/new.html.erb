@@ -3,7 +3,8 @@
 <%= render 'shared/topbar' %>
 <div class="wrapper">
 <%= simple_form_for @event do |f| %>
-<%= f.select :category, options_for_select(all_categories(current_user)) %>
+<%#= f.select :category, options_for_select(all_categories(current_user)) %>
+<%= f.association :category %>
 <%= f.input :name %>
 <%= f.input :description%>
 <%= f.input :starting_time%>

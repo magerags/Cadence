@@ -12,12 +12,12 @@ class GoalsController < ApplicationController
   end
 
   def create
-    id, class_name = JSON.parse(params[:goal][:category])
-    category = class_name.constantize.find(id)
+    # id, class_name = JSON.parse(params[:goal][:category])
+    # category = class_name.constantize.find(id)
     @goal = Goal.new(goal_params)
     @goal.user = current_user
-    category_class = class_name.downcase == ("category") ? ("category_id") : ("user_categories_id")
-    @goal.send("#{category_class}=", category.id)
+    # category_class = class_name.downcase == ("category") ? ("category_id") : ("user_categories_id")
+    # @goal.send("#{category_class}=", category.id)
     if @goal.save!
       redirect_to goals_path
     else
@@ -42,7 +42,7 @@ class GoalsController < ApplicationController
   private
 
   def goal_params
-    params.require(:goal).permit(:goaltime)
+    params.require(:goal).permit(:category_id, :goaltime)
   end
 
   def set_goal
