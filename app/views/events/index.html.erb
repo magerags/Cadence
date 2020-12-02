@@ -19,13 +19,13 @@
     </div>
 
 
-      <% if @dates %>
+      <% unless @dates.nil? || @dates.size.zero? %>
      <div id = "rightbox">
       <h1><%= @dates.first.starting_time.strftime("%D") %> </h1>
       <%sorted_dates = @dates.sort_by{|event| event.starting_time}%>
         <% sorted_dates.each do |date| %>
         <div class ="date">
-          <%= date.starting_time.strftime("%H:%M") %> | <%= date.ending_time.strftime("%H:%M") %> | <%= date.get_category.name %> | <%= date.name %> | <%= date.description %>
+          <%= date.starting_time.strftime("%H:%M") %> | <%= date.ending_time.strftime("%H:%M") %> | <%= date.category.name %> | <%= date.name %> | <%= date.description %>
           <%= link_to "Edit", edit_event_path(id: date.id, date: params[:date]) %>
           | <%= link_to event_path(id: date.id, date: params[:date]), method: :delete, data: { confirm: 'Are you sure?'} do %>
             <i class="fas fa-minus-circle"></i>

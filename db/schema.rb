@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_01_112838) do
+ActiveRecord::Schema.define(version: 2020_12_02_095343) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,6 +19,8 @@ ActiveRecord::Schema.define(version: 2020_12_01_112838) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id", null: false
+    t.index ["user_id"], name: "index_categories_on_user_id"
   end
 
   create_table "events", force: :cascade do |t|
@@ -31,9 +33,7 @@ ActiveRecord::Schema.define(version: 2020_12_01_112838) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "category_id"
-    t.bigint "user_categories_id"
     t.index ["category_id"], name: "index_events_on_category_id"
-    t.index ["user_categories_id"], name: "index_events_on_user_categories_id"
     t.index ["user_id"], name: "index_events_on_user_id"
   end
 
@@ -43,19 +43,9 @@ ActiveRecord::Schema.define(version: 2020_12_01_112838) do
     t.datetime "updated_at", precision: 6, null: false
     t.time "goaltime"
     t.bigint "user_id", null: false
-    t.bigint "user_categories_id"
     t.bigint "category_id"
     t.index ["category_id"], name: "index_goals_on_category_id"
-    t.index ["user_categories_id"], name: "index_goals_on_user_categories_id"
     t.index ["user_id"], name: "index_goals_on_user_id"
-  end
-
-  create_table "user_categories", force: :cascade do |t|
-    t.string "name"
-    t.bigint "user_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_user_categories_on_user_id"
   end
 
   create_table "user_settings", force: :cascade do |t|
@@ -83,12 +73,10 @@ ActiveRecord::Schema.define(version: 2020_12_01_112838) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "categories", "users"
   add_foreign_key "events", "categories"
-  add_foreign_key "events", "user_categories", column: "user_categories_id"
   add_foreign_key "events", "users"
   add_foreign_key "goals", "categories"
-  add_foreign_key "goals", "user_categories", column: "user_categories_id"
   add_foreign_key "goals", "users"
-  add_foreign_key "user_categories", "users"
   add_foreign_key "user_settings", "users"
 end
