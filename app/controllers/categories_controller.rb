@@ -14,7 +14,10 @@ class CategoriesController < ApplicationController
     @category.user = current_user
 
     if @category.save
-      redirect_to categories_path
+      respond_to do |format|
+        format.js
+        format.html { redirect_to categories_path }
+      end
     else
       render :new
     end

@@ -1,18 +1,37 @@
-<div class="form_wrapper">
-  <div class="form">
+<div class="goal_wrapper">
+<div class="goals_form">
     <h2>Goals</h2>
-    <div class="form-inputs">
-      <%= simple_form_for @categories, url: setup_hours_path do |f| %>
-      <%= f.input :bed_time, :as => :time, :minute_step => 15 %>
-      <%= f.input :wake_time, :as => :time, :minute_step => 15 %>
-      <%= f.input :work_start, :as => :time, :minute_step => 15 %>
-      <%= f.input :work_end, :as => :time, :minute_step => 15 %>
-    </div>
-    <div class="form_center_actions">
-      <div class="form-actions">
-        <%= f.button :submit, "Next", class: "btn btn-primary" %>
-     </div>
-    </div>
+    <p id="info-text">Time to set your goals. This is how much time you want to spend on each category in a week. And don’t worry you can change these later if you need to.</p>
+    <div class="categories_wrap">
+    <% current_user.categories.each do |cat| %>
+    <%= render "partials/goals_form", goal: @goal, cat: cat %>
     <% end %>
-  </div>
+    </div>
+
+
+    <div class="custom_category">
+      <p>Add your own categories</p>
+      <%= simple_form_for @category, url: categories_path, remote: true do |f| %>
+      <div class="input-icon">
+      <%= f.input :name, label: false %>
+      <%= f.button :button do %><i class="fas fa-arrow-circle-up fa-lg"></i><% end %>
+      </div>
+      <% end %>
+    </div>
+    <br>
+<!-- <#%= link_to dashboard_path do %> -->
+<p class="btn btn-primary text-white" style="margin-left: -20px; margin-right: -20px;">Finish</p>
+
+<!-- <#% end %> -->
 </div>
+</div>
+
+
+<script>
+  function toggleSubmitGoal(element, addgoal) {
+    const submitGoal = document.querySelector(`#${element}`);
+    console.log(submitGoal);
+    submitGoal.setAttribute('style', 'display: unset !important;');
+    addgoal.setAttribute('style', 'display: none;');
+  }
+</script>

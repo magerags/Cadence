@@ -1,0 +1,4 @@
+const goalDiv = document.querySelector('#category_<%=@goal.category.id%>');
+const showDiv = goalDiv.nextElementSibling;
+showDiv.innerHTML = ''
+goalDiv.setAttribute('style', 'display: unset !important;')

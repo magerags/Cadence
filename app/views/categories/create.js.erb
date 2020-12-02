@@ -1,0 +1,5 @@
+(()=>{
+const wrap = document.querySelector('.categories_wrap');
+const html = '<%= j render("partials/goals_form", goal: Goal.new, cat: @category) %>'
+wrap.insertAdjacentHTML('beforeend', html)
+})()
