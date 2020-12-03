@@ -17,6 +17,7 @@
       </div>
     </div>
 
+    <% unless @upcoming_event.nil?  %>
     <div class="card7">
       <h3> Upcoming Event </h3>
       <h4> <%= @upcoming_event.category.name %> </h4>
@@ -25,6 +26,8 @@
       <p> <%= @upcoming_event.starting_time.strftime("%A,%e %B") %> </p>
       <p><%=@upcoming_event.starting_time.strftime(("%H:%M"))   %> - <%= @upcoming_event.ending_time.strftime(("%H:%M"))  %></p>
     </div>
+    <% end %>
+
 <!--       <div class = "card3">
       <div>
         <h3> Remaining Hours </h3>

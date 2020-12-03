@@ -8,7 +8,8 @@ class EventsController < ApplicationController
     @events = Event.all
     if params[:date]
       @dates = Event.events_today(current_user, params[:date])
-
+    else
+      @dates = Event.events_today(current_user, Date.today)
     end
   end
 
