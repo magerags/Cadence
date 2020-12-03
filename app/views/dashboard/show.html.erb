@@ -40,8 +40,13 @@
         <div class="category">
         <h4> <%= cat.name %> </h4>
         <% goal = cat.goal %>
+        <% if @hours_by_category[cat.id].nil? %>
+        <% percentage = 0 %>
+        <% time = cat.goal.goaltime.hour %>
+        <% else %>
           <% time = (goal.goaltime.hour) -  @hours_by_category[cat.id] %>
           <% percentage =  (@hours_by_category[cat.id] / (goal.goaltime.hour)) * 100  %>
+        <% end %>
 
           <p>You have <span><%= time  %> hour(s)</span> left on your goal of <span><%= goal.goaltime.hour %> hours </span> this week </p>
           <div class="progress w3-progress-container w3-round-xlarge">
