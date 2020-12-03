@@ -4,6 +4,44 @@
     margin-top: 5px;
   }
 
-.card_container {
+.card_wrap {
+  display: flex;
   margin-bottom: 40px;
+}
+
+.wrapper {
+  h3 {
+    color: rgb(40,40,40);
+    font-weight: 400;
+    font-size: 1.3rem;
+  }
+}
+
+.cat_wrap {
+  border-radius: 20px;
+  display: flex;
+  justify-content: space-between;
+
+  .category {
+   width: 48%;
+   background-color: rgb(240,240,240);
+   margin-right: 30px;
+   padding: 20px;
+   border-radius: 20px;
+
+   h4 {
+    color: rgb(40,40,40);
+   }
+
+   p {
+    color: rgb(40,40,40);
+    font-size: 1.1rem;
+    margin-top: -8px;
+    margin-bottom: 20px;
+   }
+
+   span {
+    font-weight: 500;
+   }
+  }
 }
