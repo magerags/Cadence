@@ -6,10 +6,10 @@ class Event < ApplicationRecord
     events = current_user.events.where("date(starting_time) >= date(?)", Date.today)
     events.reduce({}) do |acc, event|
       time = (event.ending_time - event.starting_time) / 3600
-      if acc[event.category.name].nil?
-         acc[event.category.name] = time
+      if acc[event.category.id].nil?
+         acc[event.category.id] = time
       else
-        acc[event.category.name] += time
+        acc[event.category.id] += time
       end
       acc
     end

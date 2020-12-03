@@ -5,8 +5,8 @@
     <div class="form-inputs">
       <%= simple_form_for @user_setting, url: setup_hours_path do |f| %>
       <%= f.hidden_field :name, value: params[:user_setting][:name] %>
-      <%= f.input :wake_time, label: "Start of the day", default: Time.parse('8:00'), :as => :time, :minute_step => 15 %>
-      <%= f.input :bed_time, label: "End of the day", default: Time.parse('22:00'), :as => :time, :minute_step => 15 %>
+      <%= f.input :wake_time, label: "When do you wake up?", default: Time.parse('8:00'), :as => :time, :minute_step => 15 %>
+      <%= f.input :bed_time, label: "When do you go to sleep?", default: Time.parse('22:00'), :as => :time, :minute_step => 15 %>
       <br>
       <br>
       <p id="info-text">When do you start and finish work?</p>

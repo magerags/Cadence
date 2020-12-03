@@ -2,15 +2,24 @@
 <div class="page-content" id="content">
 <%= render 'shared/topbar' %>
 <div class="wrapper">
+<div class="form">
 <%= simple_form_for current_user.user_setting, url: profile_path, method: :patch do |f| %>
-<%= f.input :bed_time %>
-<%= f.input :wake_time %>
-<%= f.input :work_start %>
 <%= f.input :name %>
-<%= f.input :work_end %>
-<%= f.submit %>
+<br>
+<%= f.input :wake_time, label: "When do you wake up" %>
+<%= f.input :bed_time, label: "When do you go to sleep?"  %>
+<br>
+<%= f.input :work_start, label: "Start Working" %>
+<%= f.input :work_end, label: "Finish Working" %>
+<div class="form_center_actions">
+<div class="form-actions">
+<%= f.button :submit, "Update", class: "btn btn-primary"  %>
+</div>
+</div>
 <% end %>
+<p class="text-center"><%= link_to "Back", profile_path(@profile) %></p>
 
-<%= link_to "Back", profile_path(@profile) %>
 </div>
 </div>
+</div>
+

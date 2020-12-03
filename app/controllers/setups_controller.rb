@@ -11,7 +11,7 @@ class SetupsController < ApplicationController
     @user_setting = UserSetting.new(user_setting_params)
     @user_setting.user = current_user
     if @user_setting.save
-      redirect_to dashboard_path
+      redirect_to setup_goals_path
     else
       render :step2_hours
     end

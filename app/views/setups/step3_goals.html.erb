@@ -1,29 +1,28 @@
 <div class="goal_wrapper">
-<div class="goals_form">
-    <h2>Goals</h2>
-    <p id="info-text">Time to set your goals. This is how much time you want to spend on each category in a week. And don’t worry you can change these later if you need to.</p>
-    <div class="categories_wrap">
-    <% current_user.categories.each do |cat| %>
-    <%= render "partials/goals_form", goal: @goal, cat: cat %>
-    <% end %>
-    </div>
-
-
-    <div class="custom_category">
-      <p>Add your own categories</p>
-      <%= simple_form_for @category, url: categories_path, remote: true do |f| %>
-      <div class="input-icon">
-      <%= f.input :name, label: false %>
-      <%= f.button :button do %><i class="fas fa-arrow-circle-up fa-lg"></i><% end %>
-      </div>
+  <div class="goals_form">
+    <div class="scroll">
+      <h2>Goals</h2>
+      <p id="info-text">Time to set your goals. This is how much time you want to spend on each category in a week. And don’t worry you can change these later if you need to.</p>
+      <div class="categories_wrap">
+      <% current_user.categories.each do |cat| %>
+      <%= render "partials/goals_form", goal: @goal, cat: cat %>
       <% end %>
-    </div>
-    <br>
-<!-- <#%= link_to dashboard_path do %> -->
-<p class="btn btn-primary text-white" style="margin-left: -20px; margin-right: -20px;">Finish</p>
+      </div>
 
-<!-- <#% end %> -->
-</div>
+
+      <div class="custom_category">
+        <p>Add your own categories</p>
+        <%= simple_form_for @category, url: categories_path, remote: true do |f| %>
+        <div class="input-icon">
+          <%= f.input :name, label: false %>
+          <%= f.button :button do %><i class="fas fa-arrow-circle-up fa-lg"></i><% end %>
+        </div>
+        <% end %>
+      </div>
+      <br>
+  <a href="<%= dashboard_path %>" class="btn btn-primary text-white">Finish</a>
+    </div>
+  </div>
 </div>
 
 
