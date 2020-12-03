@@ -16,6 +16,15 @@
         <h2> <%= @hours_left.round %> hours </h2>
       </div>
     </div>
+
+    <div class="card7">
+      <h3> Upcoming Event </h3>
+      <h4> <%= @upcoming_event.category.name %> </h4>
+
+      <h6> <%= @upcoming_event.name %> </h6>
+      <p> <%= @upcoming_event.starting_time.strftime("%A,%e %B") %> </p>
+      <p><%=@upcoming_event.starting_time.strftime(("%H:%M"))   %> - <%= @upcoming_event.ending_time.strftime(("%H:%M"))  %></p>
+    </div>
 <!--       <div class = "card3">
       <div>
         <h3> Remaining Hours </h3>
