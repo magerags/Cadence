@@ -1,19 +1,21 @@
 #leftbox {
   float:left;
-  width:50%;
-  height:280px;
-  }
+  width:40%;
+  height:80vh;
+  overflow-y: scroll;
+}
 
 #rightbox{
   float:right;
-  width:48%;
-  background-color: rgb(240,240,240);
+  width:60%;
   color: black;
-  border-radius: 20px;
   padding: 18px 20px;
-  margin-top: 1.40rem;
-  max-height: 90%;
-  overflow-y: scroll;
+  height: 100%;
+  position: sticky;
+  top: 18px;
+
+
+
   h1{
     color: #46D5B3;
 
