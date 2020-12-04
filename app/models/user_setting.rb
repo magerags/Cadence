@@ -11,7 +11,7 @@ class UserSetting < ApplicationRecord
   def sleeping_hours(current_user)
     bedi = current_user.user_setting.bed_time
     waki = current_user.user_setting.wake_time
-    ((bedi - waki) * (7 - Date.today.wday)) / 3600
+    ((24 - bedi.hour + waki.hour) * (7 - Date.today.wday))
 
   end
 end
