@@ -1,14 +1,21 @@
 .calendar-heading {
   border: none!important;
+  display: flex;
+  justify-content: space-between;
 
   a {
-    font-size: 1.8rem;
+    font-size: 2.5rem;
+    margin-top: -10px;
+    margin-right: 20px;
+    margin-left: 10px;
   }
 
   .calendar-title {
     margin-left: 10px;
     margin-right: 10px;
     font-size: 1.7rem;
+    color: rgb(50,50,50);
+    font-weight: 500;
   }
 
 }
@@ -46,7 +53,7 @@ table, thead, tr, td, th, tbody {
 
 td {
   position: relative;
-  left: 5px;
+  left: 1px;
   text-align: center;
 
   #text {
@@ -66,9 +73,9 @@ td {
   }
 
     i:hover {
-        text-shadow: rgba(0, 0, 0, 0.15) 0px 12px 28px 0px,
-                rgba(0, 0, 0, 0.05) 0px 2px 4px 0px,
-                rgba(255, 255, 255, 0.025) 0px 0px 0px 1px inset;
+    text-shadow: rgba(0, 0, 0, 0.15) 0px 12px 28px 0px,
+                 rgba(0, 0, 0, 0.05) 0px 2px 4px 0px,
+                 rgba(255, 255, 255, 0.025) 0px 0px 0px 1px inset;
     cursor: pointer;
     transform: translateY(-2px);
   }

@@ -74,7 +74,7 @@
           <% percentage =  (@hours_by_category[cat.id] / (goal.goaltime.hour)) * 100  %>
         <% end %>
          <% if @hours_by_category[cat.id].nil? %>
-            <p>You have <span>no events</span> scheduled for this goal :(</p>
+            <p>You have <span>no events</span> scheduled for this goal 😢</p>
             <div class="progress w3-progress-container w3-round-xlarge">
             <div class="progress-bar progress-bar progress-bar-animated" role="progressbar" style="width: <%= percentage %>%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
             </div>

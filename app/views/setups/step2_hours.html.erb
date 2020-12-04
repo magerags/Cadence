@@ -1,7 +1,7 @@
 <div class="form_wrapper">
   <div class="form">
     <h2>Hours</h2>
-    <p id="info-text">Now to calculate your free hours! When do you usually sleep or switch off for the day?
+    <p id="info-text">Now to calculate your free hours! When do you usually wake up?</p>
     <div class="form-inputs">
       <%= simple_form_for @user_setting, url: setup_hours_path do |f| %>
       <%= f.hidden_field :name, value: params[:user_setting][:name] %>

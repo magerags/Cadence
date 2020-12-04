@@ -2,9 +2,16 @@
 <div class="page-content" id="content">
   <%= render 'shared/topbar' %>
   <div class="wrapper" id="events_index">
+      <div class="header" id="events_header">
+      <h1 id="date"> <%= Time.now.strftime("%A, %B %d")%> </h1>
+      <div class="big_button btn btn-third">
+        <%= link_to new_event_path do %>
+        <p class="text-white"><i class="far fa-plus"></i>Add Event</p>
+        <% end %>
+      </div>
+    </div>
      <% unless @dates.nil? || @dates.size.zero? %>
      <div id = "leftbox">
-      <h1 id="date"><%= @dates.first.starting_time.strftime("%A,%e %B") %> </h1>
       <%sorted_dates = @dates.sort_by{|event| event.starting_time}%>
         <% sorted_dates.each do |date| %>
         <div class ="card6">
@@ -30,9 +37,6 @@
       </div>
       <% end %>
     <div id = "rightbox">
-      <p style ="float: right;"><%= link_to new_event_path do  %>
-          <i class="far fa-calendar-plus fa-2x"></i>
-        <% end %></p>
       <%= month_calendar(attribute: :starting_time, end_attribute: :ending_time) do |date| %>
         <%= date.day %>
         <% today_events = current_user.events.where("date(starting_time) >= ? and date(ending_time) <= ?", date, date) %>
@@ -46,7 +50,7 @@
 
     </div>
     <%= link_to demo_path do %>
-    <div class="button btn btn-primary glow-on-hover">
+    <div class="move-up button btn btn-primary glow-on-hover">
       <p>Super Special Secret Demo Button</p>
     </div>
     <% end %>
