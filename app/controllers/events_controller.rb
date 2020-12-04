@@ -136,7 +136,7 @@ class EventsController < ApplicationController
       description: "Combat that sunday night feeling",
       repeatable: false,
       starting_time: Time.new(2020, 12, 6, 20, 0),
-      ending_time: Time.new(2020, 12, 6, 21, 0),
+      ending_time: Time.new(2020, 12, 6, 22, 0),
       category: current_user.categories.where(name: "Socialising").first
       )
     redirect_to events_path
