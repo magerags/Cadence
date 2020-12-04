@@ -95,7 +95,7 @@ class EventsController < ApplicationController
       name: "Have a nap 💤",
       description: "Time to rest, not too long though",
       repeatable: false,
-      starting_time: Time.new(2020, 12, 5, 14, 0),
+      starting_time: Time.new(2020, 12, 5, 15, 0),
       ending_time: Time.new(2020, 12, 5, 19, 0),
       category: current_user.categories.where(name: "Relaxing").first
       )
@@ -115,8 +115,8 @@ class EventsController < ApplicationController
       name: "Pull day 💪",
       description: "Get back in the gym!",
       repeatable: false,
-      starting_time: Time.new(2020, 12, 6, 16, 0),
-      ending_time: Time.new(2020, 12, 6, 18, 0),
+      starting_time: Time.new(2020, 12, 6, 14, 0),
+      ending_time: Time.new(2020, 12, 6, 16, 0),
       category: current_user.categories.where(name: "Fitness").first
       )
 
@@ -135,8 +135,8 @@ class EventsController < ApplicationController
       name: "Taco night! 🌮",
       description: "Combat that sunday night feeling",
       repeatable: false,
-      starting_time: Time.new(2020, 12, 6, 16, 0),
-      ending_time: Time.new(2020, 12, 6, 18, 0),
+      starting_time: Time.new(2020, 12, 6, 20, 0),
+      ending_time: Time.new(2020, 12, 6, 21, 0),
       category: current_user.categories.where(name: "Socialising").first
       )
     redirect_to events_path
