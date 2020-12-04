@@ -5,23 +5,26 @@
      <div class="header">
       <h1 id="date"> <%= Time.now.strftime("%A, %B %d")%> </h1>
       <div class="big_button btn btn-third">
-        <p><i class="far fa-plus"></i>Add Event</p>
+        <%= link_to new_event_path do %>
+        <p class="text-white"><i class="far fa-plus"></i>Add Event</p>
+        <% end %>
       </div>
     </div>
       <div class="card_wrap">
       <div class = "card3">
       <div>
         <h3> Remaining Hours </h3>
-        <p> this week </p>
+        <p> This week </p>
         <h2> <%= @hours_left.round %> hours </h2>
       </div>
     </div>
 
     <% unless @upcoming_event.nil?  %>
     <div class="card7">
-      <h3> Upcoming Event </h3>
-      <h4> <%= @upcoming_event.category.name %> </h4>
-
+      <div class="header">
+      <h3 id="blue"> Next Event </h3>
+      <h5> <%= @upcoming_event.category.name %> </h5>
+      </div>
       <h6> <%= @upcoming_event.name %> </h6>
       <p> <%= @upcoming_event.starting_time.strftime("%A,%e %B") %> </p>
       <p><%=@upcoming_event.starting_time.strftime(("%H:%M"))   %> - <%= @upcoming_event.ending_time.strftime(("%H:%M"))  %></p>
@@ -36,12 +39,32 @@
       </div>
       </div> -->
     </div>
-      <h3>Categories </h3>
+      <h4>Categories</h4>
+      <% counter = 0 %>
+      <% success = current_user.goals.count %>
+      <% current_user.goals.each do |goal|  %>
+      <% unless @hours_by_category[goal.category.id].nil? %>
+      <% if goal.goaltime.hour <= @hours_by_category[goal.category.id] %>
+      <% counter += 1 %>
+      <% end %>
+      <% end %>
+      <% end %>
+      <% if counter == success %>
+      <p class="congrats">Your schedule meets all your goals! 🎉   Now it's up to you to do it!</p>
+      <% end %>
       <div class="cat_wrap">
       <% current_user.categories.each do |cat| %>
-          <% unless cat.goal.nil? %>
-        <div class="category">
-        <h4> <%= cat.name %> </h4>
+        <% unless cat.goal.nil? %>
+        <% if @hours_by_category[cat.id].nil? %>
+        <% color = "red" %>
+        <% elsif @hours_by_category[cat.id] >= cat.goal.goaltime.hour %>
+        <% color = "green" %>
+        <% else %>
+        <% color = "none" %>
+        <% end %>
+        <a href="<%= edit_goal_path(cat.goal.id) %>" class="link">
+        <div class="category <%=color %>">
+        <h4><%= cat.name %> </h4>
         <% goal = cat.goal %>
         <% if @hours_by_category[cat.id].nil? %>
         <% percentage = 0 %>
@@ -50,12 +73,24 @@
           <% time = (goal.goaltime.hour) -  @hours_by_category[cat.id] %>
           <% percentage =  (@hours_by_category[cat.id] / (goal.goaltime.hour)) * 100  %>
         <% end %>
-
-          <p>You have <span><%= time  %> hour(s)</span> left on your goal of <span><%= goal.goaltime.hour %> hours </span> this week </p>
+         <% if @hours_by_category[cat.id].nil? %>
+            <p>You have <span>no events</span> scheduled for this goal :(</p>
+            <div class="progress w3-progress-container w3-round-xlarge">
+            <div class="progress-bar progress-bar progress-bar-animated" role="progressbar" style="width: <%= percentage %>%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+        <% elsif @hours_by_category[cat.id] >= goal.goaltime.hour %>
+        <p>You've completed your goal of <%= goal.goaltime.hour %> hours. <span>Well done!</span></p>
           <div class="progress w3-progress-container w3-round-xlarge">
             <div class="progress-bar progress-bar progress-bar-animated" role="progressbar" style="width: <%= percentage %>%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
           </div>
+        <% else %>
+          <p>Scheduled <span><%= @hours_by_category[cat.id]  %> hour(s)</span> of your goal of <span><%= goal.goaltime.hour %> hours </span></p>
+          <div class="progress w3-progress-container w3-round-xlarge">
+            <div class="progress-bar progress-bar progress-bar-animated" role="progressbar" style="width: <%= percentage %>%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+        <% end %>
         </div>
+      </a>
         <% end %>
       <% end %>
     </div>

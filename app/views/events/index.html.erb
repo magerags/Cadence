@@ -1,10 +1,10 @@
 <%= render 'shared/navbar' %>
 <div class="page-content" id="content">
   <%= render 'shared/topbar' %>
-  <div class="wrapper">
+  <div class="wrapper" id="events_index">
      <% unless @dates.nil? || @dates.size.zero? %>
      <div id = "leftbox">
-      <h1><%= @dates.first.starting_time.strftime("%A,%e %B") %> </h1>
+      <h1 id="date"><%= @dates.first.starting_time.strftime("%A,%e %B") %> </h1>
       <%sorted_dates = @dates.sort_by{|event| event.starting_time}%>
         <% sorted_dates.each do |date| %>
         <div class ="card6">
@@ -12,37 +12,43 @@
              <h4><%= date.name %> </h4>
              <h5> <%= date.category.name %> </h5>
            </div>
-           <p class = "time"><%= date.starting_time.strftime("%H:%M") %>-<%= date.ending_time.strftime("%H:%M") %></p>
+           <p class="time"><%= date.starting_time.strftime("%H:%M") %> - <%= date.ending_time.strftime("%H:%M") %></p>
            <br>
-           <p class ="description"> <%= date.description %> </p>
+           <div class="d-flex justify-content-between">
+           <p class="description"> <%= date.description %> </p>
+           <div class="move-right">
             <%= link_to edit_event_path(id: date.id, date: params[:date]) do %>
            <i class="far fa-edit"></i>
             <% end %>
            <%= link_to event_path(id: date.id, date: params[:date]), method: :delete, data: { confirm: 'Are you sure?'} do %>
             <i class="fas fa-minus-circle"></i>
           <% end %>
+          </div>
+          </div>
         </div>
         <% end %>
       </div>
       <% end %>
     <div id = "rightbox">
-      <p style ="float: right;"> New event: <%= link_to new_event_path do  %>
-          <i class="far fa-calendar-plus"></i>
+      <p style ="float: right;"><%= link_to new_event_path do  %>
+          <i class="far fa-calendar-plus fa-2x"></i>
         <% end %></p>
       <%= month_calendar(attribute: :starting_time, end_attribute: :ending_time) do |date| %>
         <%= date.day %>
         <% today_events = current_user.events.where("date(starting_time) >= ? and date(ending_time) <= ?", date, date) %>
 
         <% if !today_events.size.zero? %>
-          <%= link_to "Show events", events_path(date: date) %>
+          <%= link_to events_path(date: date) do %>
+            <i class="fas fa-circle fa-lg"></i>
+          <% end %>
         <% end %>
       <% end %>
+
     </div>
-
-
-
-
-
-
+    <%= link_to demo_path do %>
+    <div class="button btn btn-primary glow-on-hover">
+      <p>Super Special Secret Demo Button</p>
+    </div>
+    <% end %>
   </div>
 </div>

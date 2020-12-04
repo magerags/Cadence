@@ -5,7 +5,7 @@ class UserSetting < ApplicationRecord
 
     worki = current_user.user_setting.work_start
     worko = current_user.user_setting.work_end
-    ((worko - worki) * (6 - Date.today.wday)) / 3600
+    ((worko - worki) * (5 - Date.today.wday)) / 3600
   end
 
   def sleeping_hours(current_user)

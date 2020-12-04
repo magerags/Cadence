@@ -2,14 +2,16 @@
 <div class="page-content" id="content">
 <%= render 'shared/topbar' %>
 <div class="wrapper">
+<div class="form">
 <%= simple_form_for @event do |f| %>
-<%= f.select :category, options_for_select(all_categories(current_user)) %>
 <%= f.input :name %>
+<%= f.select :category, options_for_select(all_categories(current_user)) %>
 <%= f.input :description%>
-<%= f.input :starting_time%>
+<%= f.input :starting_time %>
 <%= f.input :ending_time%>
 <%= hidden_field_tag :date, params[:date] if params[:date] %>
 <%= f.submit %>
 <% end %>
+</div>
 </div>
 </div>

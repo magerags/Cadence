@@ -6,10 +6,8 @@ class Category < ApplicationRecord
 
   DEFAULT_CATEGORIES = ['Socialising',
                         'Eating',
-                        'Hobby',
                         'Chores',
-                        'Chilling',
-                        'Coding',
-                        'Gym',
-                        'Running']
+                        'Relaxing',
+                        'Reading',
+                        'Fitness']
 end
