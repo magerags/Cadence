@@ -27,7 +27,7 @@ class GoalsController < ApplicationController
 
   def update
     @goal.update(goal_params)
-    redirect_to goals_path
+    redirect_to dashboard_path
   end
 
   def destroy
