@@ -52,8 +52,8 @@ class EventsController < ApplicationController
   def demo
     Event.create!(
       user: current_user,
-      name: "Sushi",
-      description: "The most exquisite food there is 🍣",
+      name: "Sushi 🍣",
+      description: "The most exquisite food there is",
       repeatable: false,
       starting_time: Time.new(2020, 12, 4, 19, 0),
       ending_time: Time.new(2020, 12, 4, 20, 0),
@@ -62,8 +62,8 @@ class EventsController < ApplicationController
 
     Event.create!(
       user: current_user,
-      name: "Morning run",
-      description: "Aim for 5km in 30mins! 🏃‍♂️",
+      name: "Morning run 🏃‍♂️",
+      description: "Aim for 5km in 30mins!",
       repeatable: false,
       starting_time: Time.new(2020, 12, 5, 10, 0),
       ending_time: Time.new(2020, 12, 5, 11, 0),
@@ -72,8 +72,8 @@ class EventsController < ApplicationController
 
     Event.create!(
       user: current_user,
-      name: "Push day",
-      description: "Time to smash the gym 🏋️‍♂️",
+      name: "Push day 🏋️‍♂️",
+      description: "Time to smash the gym",
       repeatable: false,
       starting_time: Time.new(2020, 12, 5, 11, 0),
       ending_time: Time.new(2020, 12, 5, 12, 30),
@@ -82,8 +82,8 @@ class EventsController < ApplicationController
 
     Event.create!(
       user: current_user,
-      name: "Lunch with Henry",
-      description: "Get lots of protein in 🍗",
+      name: "Lunch with Henry 🍗",
+      description: "Get lots of protein in",
       repeatable: false,
       starting_time: Time.new(2020, 12, 5, 14, 0),
       ending_time: Time.new(2020, 12, 5, 15, 0),
@@ -92,18 +92,18 @@ class EventsController < ApplicationController
 
     Event.create!(
       user: current_user,
-      name: "Have a nap",
-      description: "Time to rest, not too long though 💤",
+      name: "Have a nap 💤",
+      description: "Time to rest, not too long though",
       repeatable: false,
       starting_time: Time.new(2020, 12, 5, 14, 0),
-      ending_time: Time.new(2020, 12, 5, 15, 0),
+      ending_time: Time.new(2020, 12, 5, 19, 0),
       category: current_user.categories.where(name: "Relaxing").first
       )
 
     Event.create!(
       user: current_user,
-      name: "Cleaning",
-      description: "Yep we all have to do it... 🧼",
+      name: "Cleaning 🧼",
+      description: "Yep we all have to do it...",
       repeatable: false,
       starting_time: Time.new(2020, 12, 6, 12, 0),
       ending_time: Time.new(2020, 12, 6, 14, 0),
@@ -112,8 +112,8 @@ class EventsController < ApplicationController
 
     Event.create!(
       user: current_user,
-      name: "Pull day",
-      description: "Get back in the gym! 💪",
+      name: "Pull day 💪",
+      description: "Get back in the gym!",
       repeatable: false,
       starting_time: Time.new(2020, 12, 6, 16, 0),
       ending_time: Time.new(2020, 12, 6, 18, 0),
@@ -122,8 +122,8 @@ class EventsController < ApplicationController
 
     Event.create!(
       user: current_user,
-      name: "Online CV",
-      description: "Keep your coding skills active 💻",
+      name: "Online CV 💻",
+      description: "Keep your coding skills active",
       repeatable: false,
       starting_time: Time.new(2020, 12, 6, 16, 0),
       ending_time: Time.new(2020, 12, 6, 18, 0),
@@ -132,8 +132,8 @@ class EventsController < ApplicationController
 
     Event.create!(
       user: current_user,
-      name: "Taco night!",
-      description: "Combat that sunday night feeling 🌮",
+      name: "Taco night! 🌮",
+      description: "Combat that sunday night feeling",
       repeatable: false,
       starting_time: Time.new(2020, 12, 6, 16, 0),
       ending_time: Time.new(2020, 12, 6, 18, 0),
