@@ -1,22 +1,22 @@
 <%= render 'shared/navbar' %>
 <div class="page-content" id="content">
-<%= render 'shared/topbar' %>
-<div class="wrapper">
-<div class="form" id="wide">
-<%= simple_form_for @event do |f| %>
-<%= f.input :name %>
-<p class="label">Category</p>
-<%= f.select :category, options_for_select(all_categories(current_user)) %>
-<%= f.input :description%>
-<%= f.input :starting_time, order: [:day, :month, :year], :minute_step => 15 %>
-<%= f.input :ending_time, order: [:day, :month, :year], :minute_step => 15 %>
-    <div class="form_center_actions">
-      <div class="form-actions">
-<%= f.submit class: "btn btn-primary"%>
-</div>
-</div>
-<% end %>
-<p><%= link_to "Back", events_path %></p>
-</div>
-</div>
+  <%= render 'shared/topbar' %>
+  <div class="wrapper">
+    <div class="form" id="wide">
+      <%= simple_form_for @event do |f| %>
+        <%= f.input :name %>
+        <p class="label">Category</p>
+        <%= f.select :category, options_for_select(all_categories(current_user)) %>
+        <%= f.input :description%>
+        <%= f.input :starting_time, order: [:day, :month, :year], :minute_step => 15 %>
+        <%= f.input :ending_time, order: [:day, :month, :year], :minute_step => 15 %>
+        <div class="form_center_actions">
+          <div class="form-actions">
+            <%= f.submit class: "btn btn-primary"%>
+          </div>
+        </div>
+      <% end %>
+      <p><%= link_to "Back", events_path %></p>
+    </div>
+  </div>
 </div>

@@ -2,57 +2,55 @@
 <div class="page-content" id="content">
   <%= render 'shared/topbar' %>
   <div class="wrapper" id="events_index">
-      <div class="header" id="events_header">
+    <div class="header" id="events_header">
       <h1 id="date"> <%= Time.now.strftime("%A, %B %d")%> </h1>
       <div class="big_button btn btn-third">
         <%= link_to new_event_path do %>
-        <p class="text-white"><i class="far fa-plus"></i>Add Event</p>
+          <p class="text-white"><i class="far fa-plus"></i>Add Event</p>
         <% end %>
       </div>
     </div>
-     <% unless @dates.nil? || @dates.size.zero? %>
-     <div id = "leftbox">
-      <%sorted_dates = @dates.sort_by{|event| event.starting_time}%>
+    <% unless @dates.nil? || @dates.size.zero? %>
+      <div id = "leftbox">
+        <%sorted_dates = @dates.sort_by{|event| event.starting_time}%>
         <% sorted_dates.each do |date| %>
-        <div class ="card6">
-           <div class="d-flex justify-content-between">
-             <h4><%= date.name %> </h4>
-             <h5> <%= date.category.name %> </h5>
-           </div>
-           <p class="time"><%= date.starting_time.strftime("%H:%M") %> - <%= date.ending_time.strftime("%H:%M") %></p>
-           <br>
-           <div class="d-flex justify-content-between">
-           <p class="description"> <%= date.description %> </p>
-           <div class="move-right">
-            <%= link_to edit_event_path(id: date.id, date: params[:date]) do %>
-           <i class="far fa-edit"></i>
-            <% end %>
-           <%= link_to event_path(id: date.id, date: params[:date]), method: :delete, data: { confirm: 'Are you sure?'} do %>
-            <i class="fas fa-minus-circle"></i>
-          <% end %>
+          <div class ="card6">
+            <div class="d-flex justify-content-between">
+              <h4><%= date.name %> </h4>
+              <h5> <%= date.category.name %> </h5>
+            </div>
+            <p class="time"><%= date.starting_time.strftime("%H:%M") %> - <%= date.ending_time.strftime("%H:%M") %></p>
+            <br>
+            <div class="d-flex justify-content-between">
+              <p class="description"> <%= date.description %> </p>
+              <div class="move-right">
+                <%= link_to edit_event_path(id: date.id, date: params[:date]) do %>
+                  <i class="far fa-edit"></i>
+                <% end %>
+                <%= link_to event_path(id: date.id, date: params[:date]), method: :delete, data: { confirm: 'Are you sure?'} do %>
+                  <i class="fas fa-minus-circle"></i>
+                <% end %>
+              </div>
+            </div>
           </div>
-          </div>
-        </div>
         <% end %>
       </div>
-      <% end %>
+    <% end %>
     <div id = "rightbox">
       <%= month_calendar(attribute: :starting_time, end_attribute: :ending_time) do |date| %>
         <%= date.day %>
         <% today_events = current_user.events.where("date(starting_time) >= ? and date(ending_time) <= ?", date, date) %>
-
         <% if !today_events.size.zero? %>
           <%= link_to events_path(date: date) do %>
             <i class="fas fa-circle fa-lg"></i>
           <% end %>
         <% end %>
       <% end %>
-
     </div>
     <%= link_to demo_path do %>
-    <div class="move-up button btn btn-primary glow-on-hover">
-      <p>Super Special Secret Demo Button</p>
-    </div>
+      <div class="move-up button btn btn-primary glow-on-hover">
+        <p>Super Special Secret Demo Button</p>
+      </div>
     <% end %>
   </div>
 </div>

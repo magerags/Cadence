@@ -4,13 +4,13 @@
     <p id="info-text">To help you master time we need to find out a little more about you and your routine. Don't worry it won't take long! Let's start with your name.</p>
     <div class="form-inputs">
       <%= simple_form_for @user_setting, url: setup_hours_path, method: :get do |f| %>
-      <%= f.input :name %>
-    </div>
-    <div class="form_center_actions">
-      <div class="form-actions">
-        <%= f.button :submit, "Next", class: "btn btn-primary" %>
-     </div>
-    </div>
+        <%= f.input :name %>
+      </div>
+      <div class="form_center_actions">
+        <div class="form-actions">
+          <%= f.button :submit, "Next", class: "btn btn-primary" %>
+        </div>
+      </div>
     <% end %>
   </div>
 </div>

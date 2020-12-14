@@ -1,14 +1,14 @@
 <%= render 'shared/navbar' %>
 <div class="page-content" id="content">
-<%= render 'shared/topbar' %>
-<div class="wrapper" id="dashboard_wrapper">
-<div class="form">
-<%= simple_form_for @goal do |f| %>
-<br>
-<h2><%= @goal.category.name %></h2>
-<%= f.input :goaltime, label: "Set a new goal!" %>
-<%= f.submit class: "btn btn-primary"%>
-<% end %>
-</div>
-</div>
+  <%= render 'shared/topbar' %>
+  <div class="wrapper" id="dashboard_wrapper">
+    <div class="form">
+      <%= simple_form_for @goal do |f| %>
+        <br>
+        <h2><%= @goal.category.name %></h2>
+        <%= f.input :goaltime, label: "Set a new goal!" %>
+        <%= f.submit class: "btn btn-primary"%>
+      <% end %>
+    </div>
+  </div>
 </div>

@@ -1,17 +1,16 @@
 <%= render 'shared/navbar' %>
 <div class="page-content" id="content">
-<%= render 'shared/topbar' %>
-<div class="wrapper" id="dashboard_wrapper">
-<% current_user.goals.each do |goal| %>
-<%= goal.category.name %>
-<p>Your goal this week is <%= goal.goaltime.strftime("%H:%M") %> hours. Make the best of it!!!</p>
-<%= link_to "edit", edit_goal_path(goal) %>
-<%= link_to goal_path(goal), method: :delete, data: { confirm: 'Are you sure?'} do %>
-<i class="fas fa-minus-circle"></i>
-<% end %>
-<% end %>
-
-<p><%= link_to "New Goal", new_goal_path %></p>
-<p> <%= link_to "Your categories", categories_path %> </p>
-</div>
+  <%= render 'shared/topbar' %>
+  <div class="wrapper" id="dashboard_wrapper">
+    <% current_user.goals.each do |goal| %>
+      <%= goal.category.name %>
+      <p>Your goal this week is <%= goal.goaltime.strftime("%H:%M") %> hours. Make the best of it!!!</p>
+      <%= link_to "edit", edit_goal_path(goal) %>
+      <%= link_to goal_path(goal), method: :delete, data: { confirm: 'Are you sure?'} do %>
+        <i class="fas fa-minus-circle"></i>
+      <% end %>
+    <% end %>
+    <p><%= link_to "New Goal", new_goal_path %></p>
+    <p> <%= link_to "Your categories", categories_path %> </p>
+  </div>
 </div>

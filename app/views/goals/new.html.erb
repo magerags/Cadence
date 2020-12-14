@@ -1,8 +1,8 @@
 <div class="page-content p-5" id="content">
-<%= simple_form_for @goal do |f| %>
-<%#= f.select :category, options_for_select(all_categories(current_user)) %>
-<%= f.association :category %>
-<%= f.input :goaltime %>
-<%= f.submit %>
-<% end %>
+  <%= simple_form_for @goal do |f| %>
+    <%#= f.select :category, options_for_select(all_categories(current_user)) %>
+    <%= f.association :category %>
+    <%= f.input :goaltime %>
+    <%= f.submit %>
+  <% end %>
 </div>

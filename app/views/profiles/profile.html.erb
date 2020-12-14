@@ -1,31 +1,30 @@
 <%= render 'shared/navbar' %>
 <div class="page-content" id="content">
-<%= render 'shared/topbar' %>
-<div class="wrapper">
-<div class="profile">
-<div class="flex-between">
-<h1>Hi <%= @user_setting.name %>!</h1>
-<%= link_to profile_edit_path(@profile) do %>
-<div class="big_button btn btn-third">
-<p><i class="far fa-edit"></i>Edit</p>
-</div>
-<% end %>
-</div>
-<h4>Let's have a look at your settings</h4>
-<br>
-<div class="card">
-<h5> Sleeping hours </h5>
-<h2> From <%= @user_setting.bed_time.strftime("%H:%M") %> until
-<%= @user_setting.wake_time.strftime("%H:%M") %></h2>
-</div>
-<div class="card">
-<h5>Working hours</h5>
-<h2> From <%= @user_setting.work_start.strftime("%H:%M") %> until
-<%= @user_setting.work_end.strftime("%H:%M") %></h2>
-</div>
-<br>
-</div>
-
-</div>
+  <%= render 'shared/topbar' %>
+  <div class="wrapper">
+    <div class="profile">
+      <div class="flex-between">
+        <h1>Hi <%= @user_setting.name %>!</h1>
+        <%= link_to profile_edit_path(@profile) do %>
+          <div class="big_button btn btn-third">
+            <p><i class="far fa-edit"></i>Edit</p>
+          </div>
+        <% end %>
+      </div>
+      <h4>Let's have a look at your settings</h4>
+      <br>
+      <div class="card">
+        <h5> Sleeping hours </h5>
+        <h2> From <%= @user_setting.bed_time.strftime("%H:%M") %> until
+          <%= @user_setting.wake_time.strftime("%H:%M") %></h2>
+      </div>
+      <div class="card">
+        <h5>Working hours</h5>
+        <h2> From <%= @user_setting.work_start.strftime("%H:%M") %> until
+          <%= @user_setting.work_end.strftime("%H:%M") %></h2>
+      </div>
+      <br>
+    </div>
+  </div>
 </div>
 </div>

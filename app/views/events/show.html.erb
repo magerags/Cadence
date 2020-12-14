@@ -1,13 +1,13 @@
 <%= render 'shared/navbar' %>
 <div class="page-content" id="content">
-<%= render 'shared/topbar' %>
-<div class="wrapper">
-<%= @event.name %>
-<%= @event.description %>
-<%= link_to @event, method: :delete, data: { confirm: 'Are you sure?'} do %>
-<i class="fas fa-minus-circle"></i>
-<% end %>
-<p><%= link_to "Back", events_path %></p>
-<p><%= link_to "Edit", edit_event_path(@event) %></p>
-</div>
+  <%= render 'shared/topbar' %>
+  <div class="wrapper">
+    <%= @event.name %>
+    <%= @event.description %>
+    <%= link_to @event, method: :delete, data: { confirm: 'Are you sure?'} do %>
+      <i class="fas fa-minus-circle"></i>
+    <% end %>
+    <p><%= link_to "Back", events_path %></p>
+    <p><%= link_to "Edit", edit_event_path(@event) %></p>
+  </div>
 </div>
